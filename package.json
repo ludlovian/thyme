@@ -1,6 +1,6 @@
 {
   "name": "@ludlovian/thyme",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Convert strings to Dates",
   "main": "src/index.mjs",
   "exports": {
