@@ -12,3 +12,11 @@ export default function convert (str) {
   }
   return str
 }
+
+export function jsonParse (str) {
+  return JSON.parse(str, maybeConvertDates)
+}
+
+function maybeConvertDates (key, value) {
+  return typeof value === 'string' ? convert(value) : value
+}

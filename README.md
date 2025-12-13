@@ -15,3 +15,8 @@ Valid string formats are:
 -   An optional trailing `Z`
 
 All datetimes are assumed to be UTC whether there is a `Z` or not.
+
+## jsonParse (str) => Object
+
+A named export as a drop-in for `JSON.parse` which converts date-like
+strings into `Date` objects
