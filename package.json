@@ -2,14 +2,15 @@
   "name": "@ludlovian/thyme",
   "version": "0.1.1",
   "description": "Convert strings to Dates",
-  "main": "src/index.mjs",
+  "type": "module",
   "exports": {
-    ".": "./src/index.mjs"
+    ".": "./src/index.js",
+    "./strict": "./src/strict.js"
   },
   "scripts": {
     "clean": "rm -rf coverage/ node_modules/.cache/",
-    "lint": "standard '{src,test}/**/*.mjs'|snazzy",
-    "format": "prettier-standard '{src,test}/**/*.mjs'",
+    "lint": "standard '{src,test}/**/*.js'|snazzy",
+    "format": "prettier-standard '{src,test}/**/*.js'",
     "test": "c8 node --test",
     "coverage": "npm run test && c8 report --reporter=html && sirv coverage/ -p 8000 -H"
   },

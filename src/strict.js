@@ -1,0 +1,21 @@
+const DT_RX = /^\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d\d\d)?Z$/
+export default function convert (str) {
+  const len = str?.length
+  if (
+    str &&
+    typeof str === 'string' &&
+    (len === 20 || len === 24) &&
+    DT_RX.test(str)
+  ) {
+    return new Date(str)
+  }
+  return str
+}
+
+export function jsonParse (str) {
+  return JSON.parse(str, maybeConvertDates)
+}
+
+function maybeConvertDates (key, value) {
+  return typeof value === 'string' ? convert(value) : value
+}

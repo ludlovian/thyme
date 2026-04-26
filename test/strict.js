@@ -1,15 +1,15 @@
-import { suite, test } from 'node:test'
+import test from 'node:test'
 import assert from 'node:assert/strict'
 
-import convert, { jsonParse } from '../src/index.mjs'
+import convert, { jsonParse } from '../src/strict.js'
 
 function dateEqual (act, exp) {
   assert.ok(act instanceof Date, 'not a Date object')
   assert.strictEqual(act.getTime(), exp.getTime(), 'Dates not equal')
 }
 
-suite('Thyme', () => {
-  suite('Conversion', () => {
+test('Strict Thyme', () => {
+  test('Conversion', () => {
     const d1 = new Date('1966-01-19T09:10:11Z')
     const d2 = new Date('1966-01-19T09:10:11.234Z')
 
@@ -27,38 +27,38 @@ suite('Thyme', () => {
 
     test('standard ISO strings with no Z', () => {
       const s1 = '1966-01-19T09:10:11'
-      const exp1 = d1
+      const exp1 = s1
       const act1 = convert(s1)
-      dateEqual(act1, exp1)
+      assert.strictEqual(act1, exp1)
 
       const s2 = '1966-01-19T09:10:11.234'
-      const exp2 = d2
+      const exp2 = s2
       const act2 = convert(s2)
-      dateEqual(act2, exp2)
+      assert.strictEqual(act2, exp2)
     })
 
     test('SQLite Datetime strings with space', () => {
       const s1 = '1966-01-19 09:10:11'
-      const exp1 = d1
+      const exp1 = s1
       const act1 = convert(s1)
-      dateEqual(act1, exp1)
+      assert.strictEqual(act1, exp1)
 
       const s2 = '1966-01-19 09:10:11.234'
-      const exp2 = d2
+      const exp2 = s2
       const act2 = convert(s2)
-      dateEqual(act2, exp2)
+      assert.strictEqual(act2, exp2)
     })
 
     test('SQLite Datetime strings with Z', () => {
       const s1 = '1966-01-19 09:10:11Z'
-      const exp1 = d1
+      const exp1 = s1
       const act1 = convert(s1)
-      dateEqual(act1, exp1)
+      assert.strictEqual(act1, exp1)
 
       const s2 = '1966-01-19 09:10:11.234Z'
-      const exp2 = d2
+      const exp2 = s2
       const act2 = convert(s2)
-      dateEqual(act2, exp2)
+      assert.strictEqual(act2, exp2)
     })
 
     test('Strings too long', () => {
@@ -103,7 +103,7 @@ suite('Thyme', () => {
     })
   })
 
-  suite('JSON parsing', () => {
+  test('JSON parsing', () => {
     const d1 = new Date('1966-01-19T09:10:11Z')
     const d2 = new Date('1966-01-19T09:10:11.234Z')
 
