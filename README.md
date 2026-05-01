@@ -8,17 +8,21 @@ only two formats.
 
 ## API
 
-### convert (string) => Date
+### convert (string) => _Date_|_any_
 
 The default export
 
 If the arg is a valid string, convert it into a JS Date object.
 Otherwise just return the arg as given
 
-### jsonParse (str) => Object
+### jsonParse (str) => _Object_
 
 A named export as a drop-in for `JSON.parse` which converts date-like
 strings into `Date` objects
+
+### jsonReviver (key, value) => _Date_|_any_
+
+A named export for use as a `JSON.parse` reviver to convert strings to dates
 
 ## Accepted formats
 

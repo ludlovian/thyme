@@ -13,9 +13,9 @@ export default function convert (str) {
 }
 
 export function jsonParse (str) {
-  return JSON.parse(str, maybeConvertDates)
+  return JSON.parse(str, jsonReviver)
 }
 
-function maybeConvertDates (key, value) {
+export function jsonReviver (key, value) {
   return typeof value === 'string' ? convert(value) : value
 }
